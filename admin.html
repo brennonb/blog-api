@@ -1,0 +1,21 @@
+<form id="postForm" enctype="multipart/form-data">
+  <input type="text" name="title" placeholder="Title" required />
+  <textarea name="content" placeholder="Content" required></textarea>
+  <input type="file" name="image" />
+  <button type="submit">Publish</button>
+</form>
+
+<script>
+document.getElementById("postForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+
+  await fetch("https://your-render-url/posts", {
+    method: "POST",
+    body: formData
+  });
+
+  alert("Post created!");
+});
+</script>
